@@ -1,0 +1,296 @@
+:root {
+  font-family: var(
+    --font-sans,
+    "Avenir Next",
+    "Segoe UI",
+    "Helvetica Neue",
+    Arial,
+    sans-serif
+  );
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(
+      1400px 400px at 8% -10%,
+      rgba(22, 163, 74, 0.15),
+      transparent 55%
+    ),
+    radial-gradient(
+      1200px 380px at 100% 0%,
+      rgba(37, 99, 235, 0.18),
+      transparent 58%
+    ),
+    var(--color-background-primary, #eef3f8);
+  color: var(--color-text-primary, #111827);
+}
+
+.sales-app {
+  margin: 14px;
+  border-radius: var(--border-radius-lg, 20px);
+  border: 1px solid var(--color-border-secondary, #d9e1eb);
+  background: var(--color-background-secondary, #f8fbff);
+  box-shadow:
+    0 18px 40px -26px rgba(15, 23, 42, 0.55),
+    0 1px 0 rgba(255, 255, 255, 0.55) inset;
+  overflow: hidden;
+}
+
+.sales-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 18px 10px 18px;
+}
+
+.sales-header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.sales-header p {
+  margin: 6px 0 0 0;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary, #475569);
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.count-pill {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 7px 10px;
+  border-radius: 999px;
+  color: var(--color-text-info, #1d4ed8);
+  background: color-mix(
+    in srgb,
+    var(--color-background-info, #dbeafe) 70%,
+    transparent
+  );
+  border: 1px solid
+    color-mix(in srgb, var(--color-border-info, #93c5fd) 65%, transparent);
+}
+
+.nav-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-secondary, #d0d7e2);
+  background: var(--color-background-primary, #ffffff);
+  color: var(--color-text-primary, #111827);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.nav-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.nav-btn:not(:disabled):hover {
+  transform: translateY(-1px);
+  background: var(--color-background-tertiary, #eef2f8);
+}
+
+.sales-carousel {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 6px 18px 18px 18px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.sales-carousel::-webkit-scrollbar {
+  height: 9px;
+}
+
+.sales-carousel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sales-carousel::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-border-secondary, #c7d0dc) 70%, transparent);
+  border-radius: 999px;
+}
+
+.sale-card {
+  flex: 0 0 min(290px, 82vw);
+  scroll-snap-align: start;
+  border-radius: var(--border-radius-md, 14px);
+  overflow: hidden;
+  border: 1px solid var(--color-border-secondary, #d9e1ea);
+  background: var(--color-background-primary, #ffffff);
+  box-shadow:
+    0 9px 20px -20px rgba(15, 23, 42, 0.9),
+    0 1px 0 rgba(255, 255, 255, 0.7) inset;
+}
+
+.sale-image {
+  height: 165px;
+  background: linear-gradient(
+    130deg,
+    var(--color-background-tertiary, #ebf2f9),
+    var(--color-background-secondary, #f4f8fc)
+  );
+}
+
+.sale-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-fallback {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: var(--color-text-secondary, #64748b);
+  font-size: 0.9rem;
+}
+
+.sale-content {
+  padding: 14px;
+}
+
+.sale-content h2 {
+  margin: 0;
+  font-size: 1.02rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sale-tags {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.sale-tag {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 999px;
+  color: var(--color-text-info, #1d4ed8);
+  background: color-mix(in srgb, var(--color-background-info, #dbeafe) 72%, transparent);
+  border: 1px solid
+    color-mix(in srgb, var(--color-border-info, #93c5fd) 58%, transparent);
+}
+
+.state-panel {
+  margin: 8px 18px 20px 18px;
+  border-radius: var(--border-radius-md, 14px);
+  border: 1px solid var(--color-border-secondary, #d7e0e9);
+  background: var(--color-background-primary, #ffffff);
+  padding: 18px;
+}
+
+.state-panel h2 {
+  margin: 0 0 8px 0;
+  font-size: 1rem;
+}
+
+.state-panel p {
+  margin: 0;
+  color: var(--color-text-secondary, #475569);
+  font-size: 0.9rem;
+}
+
+.state-panel.error {
+  border-color: color-mix(
+    in srgb,
+    var(--color-border-danger, #fca5a5) 80%,
+    transparent
+  );
+  background: color-mix(
+    in srgb,
+    var(--color-background-danger, #fee2e2) 36%,
+    var(--color-background-primary, #ffffff)
+  );
+}
+
+.shimmer {
+  background: linear-gradient(100deg, #e7edf4 20%, #f5f8fb 40%, #e7edf4 60%);
+  background-size: 220% 100%;
+  animation: shimmer 1.3s infinite;
+}
+
+.sale-card-skeleton .sale-content {
+  display: grid;
+  gap: 10px;
+}
+
+.sale-line {
+  height: 14px;
+  border-radius: 999px;
+}
+
+.sale-line-title {
+  width: 78%;
+}
+
+.sale-tag-skeleton {
+  display: inline-block;
+  height: 24px;
+  width: 64px;
+  border-radius: 999px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position-x: 190%;
+  }
+  100% {
+    background-position-x: -30%;
+  }
+}
+
+@media (max-width: 640px) {
+  .sales-app {
+    margin: 10px;
+  }
+
+  .sales-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .header-controls {
+    justify-content: space-between;
+  }
+
+  .sale-card {
+    flex-basis: min(260px, 84vw);
+  }
+}
