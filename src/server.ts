@@ -94,7 +94,7 @@ function createServer(): McpServer {
         const result = buildSalesToolResult(payload);
 
         return {
-          content: [{ type: "text", text: createSalesSummaryText(result) }],
+          content: [{ type: "text", text: JSON.stringify(result) }],
           structuredContent: result,
         };
       } catch (error: unknown) {

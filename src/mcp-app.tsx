@@ -87,7 +87,17 @@ function App(): JSX.Element {
           return;
         }
 
-        const parsed = parseSalesToolResult(toolResult.structuredContent);
+        let parsed = parseSalesToolResult(toolResult.structuredContent);
+        if (!parsed) {
+          const text = extractTextContent(toolResult.content);
+          if (text) {
+            try {
+              parsed = parseSalesToolResult(JSON.parse(text));
+            } catch {
+              parsed = null;
+            }
+          }
+        }
 
         if (!parsed) {
           setViewState("error");
