@@ -84,6 +84,27 @@ export function normalizeSales(payload: unknown): Sale[] {
   });
 }
 
+function parseNormalizedSales(rawSales: unknown): Sale[] {
+  if (!Array.isArray(rawSales)) {
+    return [];
+  }
+
+  return rawSales.flatMap((rawSale, index) => {
+    const sale = asRecord(rawSale);
+    if (!sale) {
+      return [];
+    }
+
+    const name = readString(sale.name) ?? "Unknown Sale";
+    const rawId = readString(sale.id);
+    const id = rawId ?? `${slugify(name) || "sale"}-${index + 1}`;
+    const imageUrl = readString(sale.imageUrl) ?? "";
+    const categories = toCategoryList(sale.categories);
+
+    return [{ id, name, imageUrl, categories }];
+  });
+}
+
 export function buildSalesToolResult(payload: unknown): SalesToolResult {
   const generatedAt = new Date().toISOString();
   const sales = normalizeSales(payload);
@@ -106,7 +127,7 @@ export function parseSalesToolResult(payload: unknown): SalesToolResult | null {
     return null;
   }
 
-  const sales = normalizeSales({ sales: record.sales });
+  const sales = parseNormalizedSales(record.sales);
   const rawCount = record.count;
   const parsedCount =
     typeof rawCount === "number" && Number.isFinite(rawCount)

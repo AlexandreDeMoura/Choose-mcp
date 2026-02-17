@@ -15,7 +15,6 @@ import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js";
 import {
   LIVE_SALES_ENDPOINT,
   buildSalesToolResult,
-  createSalesSummaryText,
   getErrorMessage,
 } from "./sales.js";
 
@@ -127,6 +126,7 @@ function createServer(): McpServer {
                 resourceDomains: [
                   "https://api.appchoose.io",
                   "https://*.appchoose.io",
+                  "https://images.choose.app",
                   "https://images.ctfassets.net",
                   "https://*.cloudfront.net",
                 ],
